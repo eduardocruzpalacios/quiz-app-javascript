@@ -1,0 +1,44 @@
+div.summary {
+    display: none;
+}
+
+div.summary.show {
+    display: block;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    width: 80%;
+}
+
+div.summary.show h2 {
+    text-align: center;
+}
+
+div.summary.show h2, div.summary.show p {
+    margin-bottom: 0.75rem;
+}
+
+div.summary.show p span#mostrarNombre {
+    font-weight: bold;
+}
+
+/* MQ TABLET */
+
+@media (min-width: 650px) and (max-width: 992px) {
+    div.summary.show {
+        padding: 1.5rem;
+        width: 70%;
+    }
+    div.summary.show h2, div.summary.show p {
+        margin-bottom: 1rem;
+    }
+}
+
+/* MQ PC */
+  
+@media (min-width: 993px) {
+    div.summary.show {
+        padding: 2rem;
+        width: 60%;
+    }
+}

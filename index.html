@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Eduardo de la Cruz Palacios">
+    <meta name="description" content="Quiz app para desarrolladores web">
+    <meta name="keywords" content="quiz app, desarrollo web, frontend, backend, programación, html, css, javascript, git, java, sql, bbdd"> 
+    <title>Quiz App - Desarrolladores Web</title>
+    <!-- STYLES -->
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/start.css">
+    <link rel="stylesheet" href="styles/questions.css">
+    <link rel="stylesheet" href="styles/summary.css">
+    <link rel="stylesheet" href="styles/rain.css">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="start" id="start-menu">
+        <h2>Quiz App</h2>
+        <p class="margin-bottom"><strong>¿Qué debo hacer?</strong> Contestar a las 10 preguntas del Quiz</p>
+        <p><strong>Puntuación:</strong></p>
+        <ul>
+            <li>Respuesta correcta +100 puntos</li>
+            <li>Respuesta erronea -50 puntos</li>
+        </ul>
+        <p class="margin-bottom"><strong>Introduce tu nombre y comienza el juego</strong></p>
+        <div>
+            <input type="text" placeholder="Nombre..." id="nombre" required>
+            <button id="start-game">START</button>
+        </div>
+    </div>
+
+
+
+    <div class="quiz-container">
+        <h2 id="question"></h2>
+        <ul>
+            <li>
+                <input type="radio" id="a" name="answer" class="answer">
+                <label id="a_text" for="a"></label>
+            </li>
+            <li>
+                <input type="radio" id="b" name="answer" class="answer">
+                <label id="b_text" for="b"></label>
+            </li>
+            <li>
+                <input type="radio" id="c" name="answer" class="answer">
+                <label id="c_text" for="c"></label>
+            </li>
+            <li>
+                <input type="radio" id="d" name="answer" class="answer">
+                <label id="d_text" for="d"></label>
+            </li>
+        </ul>
+        <div><button id="submit">Siguiente pregunta</button></div>
+    </div>
+
+    <div class="summary">
+        <h2>¡Finalizaste el quiz!</h2>
+        <p><span id="mostrarNombre"></span>, estos son tus resultados:</p>
+        <p><span id="mostrarCorrectas"></span> Correctas</span></p>
+        <p><span id="mostrarErroneas"></span> Erróneas</p>
+        <p>Tu Puntuación es <span id="mostrarPuntuacion"></span></p>
+    </div>
+
+
+    <script src="main.js"></script>
+</body>
+</html>

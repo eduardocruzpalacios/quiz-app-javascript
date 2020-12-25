@@ -1,0 +1,266 @@
+/* 
+Usuario pulsa inicio
+    cliente comprueba usuario introducido nombre
+        no
+            alert
+        sí
+            oculta .start
+            muestra .quiz-container
+*/
+
+const nombre = document.getElementById("nombre");
+const startGame = document.getElementById("start-game");
+
+startGame.addEventListener("click", () => {
+    const nombreValue = nombre.value;
+    if(nombreValue !== '')
+    {
+        document.querySelector('.start').classList.toggle('hide');
+        document.querySelector('.quiz-container').classList.toggle('show');
+    }
+    else
+    {
+        alert("Debes poner un nombre para comenzar el juego");
+    }
+});
+
+/*
+datos preguntas y respuestas
+    son 10 objetos que como propiedades tienen
+        1 pregunta
+        4 respuetas
+        1 correcta
+*/
+const quizData =
+[
+    {
+        question: '1.- ¿Cuál es el vínculo entre Java y JavaScript?',
+        a: 'Java viene de JavaScript',
+        b: 'JavaScript viene de Java',
+        c: 'Los 4 primeros caracteres',
+        d: 'Java + directiva "use strict" = JavaScript',
+        correct: 'c',
+    },
+
+    {
+        question: '2.- Sobre HTML y CSS...',
+        a: 'HTML para estructura y contenido. CSS para layout, estilo y layout',
+        b: 'HTML y CSS no es programar',
+        c: 'No <link rel="stylesheet" href="styles.css">, no gain',
+        d: 'Todas son correctas',
+        correct: 'd',
+    },
+
+    {
+        question: '3.- En Emment escribo ul>li*4>a+img. ¿Qué obtengo?',
+        a: '1 lista no ordenada, que tiene 4 li y cada uno de estos tiene 1 enlace y, después, 1 imagen',
+        b: '1 lista ordenada, que tiene 4 li y cada uno de estos tiene 1 enlace y, después, 1 imagen',
+        c: '1 lista ordenada, que tiene 1 li que contiene 4 enlaces y, después, 1 imagen',
+        d: '1 lista no ordenada, que tiene 4 li y cada uno de estos tiene 1 enlace y, dentro, 1 imagen',
+        correct: 'a',
+    },
+    
+    {
+        question: '4.- ¿Qué bucle imprime todos los enteros pares?',
+        a: 'for (int i=0 ; i<100; i++) { System.out.println(i); }',
+        b: 'for (int i=0 ; i<100; i++) { if(i/2==0){System.out.println(i);} }',
+        c: 'for (int i=0 ; i<100; i++) { if(i%2==0){System.out.println(i);} }',
+        d: 'for (int i=0 ; i<100; i++) { if(i%2!=0){System.out.println(i);} }',
+        correct: 'c',
+    },
+    
+    {
+        question: '5.- ¿Cuál NO es SQL Injection?',
+        a: '" or ""="',
+        b: 'OR 1=1',
+        c: 'Batched SQL Statements',
+        d: 'SQL Parameters',
+        correct: 'd',
+    },
+    
+    {
+        question: '6.- ¿Cuál es la mejor estrategia de Layout en CSS?',
+        a: 'Grid, Media Queries, Responsive Design y Mobile First',
+        b: 'Cualquiera menos Float',
+        c: 'Combinar Flex y Grid, Media Queries, Responsive Design y Mobile first',
+        d: 'Flex, Media Queries, Responsive Design y Mobile first',
+        correct: 'b',
+    },
+    
+    {
+        question: '7.- ¿Por qué usar Wordpress como desarrollador?',
+        a: 'Son soluciones adecuadas para determinados proyectos que ahorran mucho tiempo',
+        b: 'Todas son correctas',
+        c: 'Para ser el intermediario entre una empresa que necesita un CMS o tienda online y no tiene ni idea de tecnología',
+        d: 'No necesitas buscar y aprender librerías',
+        correct: 'b',
+    },
+    
+    {
+        question: '8.- "Acabo de finalizar DAW y DAM, ya soy un Full Stack Developer"',
+        a: 'Todas son correctas',
+        b: '"Aunque aún no domino CSS y git, Scrum lo conozco por un amigo, y los frameworks Spring, Lavarel, Node.js, MongoDB y ANGULAR los dejo para después de dominar la base"',
+        c: 'Los Senior y los de RRHH te miran estupefactos',
+        d: 'JAJAJAJAJAJAJAJAJAJA',
+        correct: 'a',
+    },
+    
+    {
+        question: '9.- ¿Cuál es la menos redundante?',
+        a: 'if(checkInputs()){alert("Error!");} else if(checkInputs()!=true) {alert("Es correcto");} else {alert("Es correcto");}',
+        b: 'if(checkInputs()==true){alert("Error!");} else {alert("Es correcto");}',
+        c: 'if(checkInputs()!=false){alert("Error!");} else {alert("Es correcto");}',
+        d: 'if(checkInputs()){alert("Error!");} else {alert("Es correcto");}',
+        correct: 'd',
+    },
+    
+    {
+        question: '10.- La jornada laboral va a finalizar y debes guardar los cambios en el repo:',
+        a: 'Archivo, guardar como...',
+        b: 'Esto es una pregunta trampa, el autor de esta quiz app quiere liármela',
+        c: 'git add ., git commit -m nombre_commit, git push -u origin nombre_rama',
+        d: 'Si instalas una extensión de autoguardado en tu entorno de desarrollo, esto no es necesario',
+        correct: 'c',
+    },
+];
+
+// almacenar en constantes los elementos que tendrán el texto de pregunta y respuestas
+const questionE1 = document.getElementById("question");
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+// almacenar en constante el botón contestar
+const submitBtn = document.getElementById("submit");
+// guardar index objeto en variable
+let currentQuiz = 0;
+// declarar e iniciar puntuación
+let correctas = 0;
+let erroneas = 0;
+//
+const answerEls = document.querySelectorAll(".answer");
+
+// ejecutar función coge datos 1 instancia objeto y los mete en h2 y label
+loadQuiz();
+
+function loadQuiz()
+{
+    deselectAnswers();
+
+    const currentQuizData = quizData[currentQuiz];
+
+        questionE1.innerText = currentQuizData.question;
+        a_text.innerText = currentQuizData.a;
+        b_text.innerText = currentQuizData.b;
+        c_text.innerText = currentQuizData.c;
+        d_text.innerText = currentQuizData.d;
+}
+//
+
+// función que almacena id del input seleccionado en answer (no seleccionado, answer=undefined;)
+function getSelected() {
+    let answer = undefined;
+
+    answerEls.forEach((answerEl) => {
+        if (answerEl.checked)
+        {
+            answer = answerEl.id;
+        }
+    });
+
+    return answer;
+}
+
+function deselectAnswers() {
+    answerEls.forEach((answerEl) => {
+        answerEl.checked = false;
+    });
+}
+
+/*
+el usuario contesta una pregunta
+    cliente revisa answer
+        si seleccionada y hay más preguntas disponibles
+            aumenta el index del objeto y carga sus datos
+        si seleccionada y no más preguntas
+            oculta .quiz-container
+            muestra .summary
+            ejecuta lluvia iconos
+        no seleecionada
+            alert
+*/
+submitBtn.addEventListener("click", () => {
+
+    const answer = getSelected();
+
+    console.log(answer); // comprobar por consola que coge el valor
+
+    if(answer)
+    {
+        if(answer === quizData[currentQuiz].correct)
+        {
+            correctas++;
+        }
+        else
+        {
+            erroneas++;
+        }
+        currentQuiz++;
+        if(currentQuiz < quizData.length)
+        {
+            loadQuiz();
+        }
+        else
+        {
+            document.querySelector('.quiz-container').classList.toggle('show');
+            document.querySelector('.summary').classList.toggle('show');
+            // set time for our function to be executed
+            setInterval(createIcon, 300);
+            
+            // var nombreValue = nombre.value;
+            const nombreValue = nombre.value;
+            console.log(nombreValue);
+            document.getElementById("mostrarNombre").innerHTML = nombreValue;
+            console.log(correctas);
+            document.getElementById("mostrarCorrectas").innerHTML = correctas;
+            console.log(erroneas);
+            document.getElementById("mostrarErroneas").innerHTML = erroneas;
+            
+            const puntuacion = (correctas*100) - (erroneas*50);
+            console.log(puntuacion);
+            document.getElementById("mostrarPuntuacion").innerHTML = puntuacion;
+        }
+        
+    }
+    else
+    {
+        alert("Debe seleccionar una opción");
+    }
+
+});
+
+/* LLUVIA ICONOS */
+
+// define the rain function (what happens when called)
+function createIcon()
+{
+    // constant box = to create img element
+    const box = document.createElement("img");
+    // make img have src="prize.svg" attribute; source https://www.flaticon.com/free-icon/trophy_3112946
+    box.setAttribute("src","trophy.svg");
+
+    // (for img element) left= ; attribute has 0-100vh as value
+    box.style.left = Math.random() * 100 + "vw";
+
+    // (for img element) animationDuration attribute has 3-4s as value
+    box.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+    // make img be in body element
+    document.body.appendChild(box);
+    // now, in the body we have an img
+
+    // time for each img to disapper
+    setTimeout(() => {
+        box.remove();
+    }, 5000);
+}

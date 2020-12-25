@@ -1,0 +1,81 @@
+div.quiz-container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    width: 80%;
+    display: none;
+}
+
+div.quiz-container.show {
+    display: block;
+}
+
+div.quiz-container h2 {
+    text-align: center;
+}
+
+div.quiz-container ul {
+    list-style-type: none;
+}
+
+div.quiz-container ul li {
+    margin: 1rem;
+    display: block;
+}
+
+div.quiz-container ul li label {
+    cursor: pointer;
+}
+
+div.quiz-container ul li input[type="radio"] {
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+div.quiz-container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.quiz-container button {
+    background-color: #0cbaba;
+    background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+    padding: 0.75rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+}
+
+div.quiz-container button:hover {
+    opacity: 0.5;
+    transition: opacity ease-in-out 1s;
+}
+
+/* MQ TABLET */
+
+@media (min-width: 650px) and (max-width: 992px) {
+    div.quiz-container {
+        padding: 1.5rem;
+        width: 70%;
+    }
+    div.quiz-container button {
+        width: 70%;
+    }
+}
+
+/* MQ PC */
+  
+@media (min-width: 993px) {
+    div.quiz-container {
+        padding: 2rem;
+        width: 60%;
+    }
+    div.quiz-container button {
+        width: 60%;
+    }
+}

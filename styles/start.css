@@ -1,0 +1,99 @@
+div.start {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    width: 80%;
+}
+
+div.start h2 {
+    text-align: center;
+}
+
+div.start h2, div.start p.margin-bottom {
+    margin-bottom: 0.75rem;
+}
+
+div.start ul {
+    list-style-type: none;
+}
+
+div.start ul li {
+    margin: 0.5rem 0 0.5rem 1rem;
+}
+
+div.start div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.start div input[type="text"] {
+    background-color: #0cbaba;
+    background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+    padding: 0.75rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: white;
+    width: 100%;
+}
+
+div.start div input[type="text"]::-webkit-input-placeholder {
+    color: White;
+}
+
+div.start button {
+    background-color: white;
+    border: solid 2px black;
+    padding: 0.75rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+div.start button:hover {
+    background-color: black;
+    border: solid 2px white;
+    color: white;
+    transition: background-color ease-in-out 1s, color ease-in-out 1s;
+}
+
+div.start.hide {
+    display: none;
+}
+
+/* MQ TABLET */
+
+@media (min-width: 650px) and (max-width: 992px) {
+    div.start {
+        padding: 1.5rem;
+        width: 70%;
+    }
+    div.start h2, div.start p.margin-bottom {
+        margin-bottom: 1rem;
+    }
+    div.start ul li {
+        margin: 0.5rem 0 0.5rem 1.5rem;
+    }
+    div.start div input[type="text"] {
+        width: 70%;
+    }
+}
+
+/* MQ PC */
+  
+@media (min-width: 993px) {
+    div.start {
+        padding: 2rem;
+        width: 60%;
+    }
+    div.start ul li {
+        margin: 0.5rem 0 0.5rem 2rem;
+    }
+    div.start div input[type="text"] {
+        width: 60%;
+    }
+}
