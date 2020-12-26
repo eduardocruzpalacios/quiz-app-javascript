@@ -26,7 +26,7 @@ startGame.addEventListener("click", () => {
 
 /*
 datos preguntas y respuestas
-    son 10 objetos que como propiedades tienen
+    son 10 objetos que tienen estas propiedades
         1 pregunta
         4 respuetas
         1 correcta
@@ -132,12 +132,12 @@ const c_text = document.getElementById("c_text");
 const d_text = document.getElementById("d_text");
 // almacenar en constante el botón contestar
 const submitBtn = document.getElementById("submit");
-// guardar index objeto en variable
+// almacenar en varible index objeto
 let currentQuiz = 0;
-// declarar e iniciar puntuación
+// declarar e iniciar conteo respuestas correctas y erróneas
 let correctas = 0;
 let erroneas = 0;
-//
+// almacenar en constantes los elementos con class="answer" (input)
 const answerEls = document.querySelectorAll(".answer");
 
 // ejecutar función coge datos 1 instancia objeto y los mete en h2 y label
@@ -157,7 +157,7 @@ function loadQuiz()
 }
 //
 
-// función que almacena id del input seleccionado en answer (no seleccionado, answer=undefined;)
+// función que almacena id del input seleccionado en variable answer (no seleccionado -> answer=undefined;)
 function getSelected() {
     let answer = undefined;
 
@@ -170,6 +170,8 @@ function getSelected() {
 
     return answer;
 }
+
+// función deseleccionar opción elegida usuario pregunta previa
 
 function deselectAnswers() {
     answerEls.forEach((answerEl) => {
@@ -214,52 +216,48 @@ submitBtn.addEventListener("click", () => {
         {
             document.querySelector('.quiz-container').classList.toggle('show');
             document.querySelector('.summary').classList.toggle('show');
-            // set time for our function to be executed
+            // hace que la función se ejecute cada X tiempo
             setInterval(createIcon, 300);
             
-            // var nombreValue = nombre.value;
             const nombreValue = nombre.value;
-            console.log(nombreValue);
+            // console.log(nombreValue);
             document.getElementById("mostrarNombre").innerHTML = nombreValue;
-            console.log(correctas);
+            // console.log(correctas);
             document.getElementById("mostrarCorrectas").innerHTML = correctas;
-            console.log(erroneas);
+            // console.log(erroneas);
             document.getElementById("mostrarErroneas").innerHTML = erroneas;
             
             const puntuacion = (correctas*100) - (erroneas*50);
-            console.log(puntuacion);
+            // console.log(puntuacion);
             document.getElementById("mostrarPuntuacion").innerHTML = puntuacion;
-        }
-        
+        }   
     }
     else
     {
         alert("Debe seleccionar una opción");
     }
-
 });
 
 /* LLUVIA ICONOS */
 
-// define the rain function (what happens when called)
+// definir función
 function createIcon()
 {
-    // constant box = to create img element
+    // constant box -> crear elemento img
     const box = document.createElement("img");
-    // make img have src="prize.svg" attribute; source https://www.flaticon.com/free-icon/trophy_3112946
+    // hacer img tenga src="prize.svg"; fuente https://www.flaticon.com/free-icon/trophy_3112946
     box.setAttribute("src","trophy.svg");
 
-    // (for img element) left= ; attribute has 0-100vh as value
+    // (para elemento img) tener atributo left= ; con valor 0-100vh
     box.style.left = Math.random() * 100 + "vw";
 
-    // (for img element) animationDuration attribute has 3-4s as value
+    // (para elemento img) atributo animationDuration con valor 3-4s
     box.style.animationDuration = Math.random() * 2 + 3 + "s";
 
-    // make img be in body element
+    // hacer img dentro de body
     document.body.appendChild(box);
-    // now, in the body we have an img
 
-    // time for each img to disapper
+    // establecer tiempo para que desaparezca cada img
     setTimeout(() => {
         box.remove();
     }, 5000);
