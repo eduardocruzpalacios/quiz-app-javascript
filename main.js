@@ -44,7 +44,7 @@ const quizData =
 
     {
         question: '2.- Sobre HTML y CSS...',
-        a: 'HTML para estructura y contenido. CSS para layout, estilo y layout',
+        a: 'HTML para estructura y contenido. CSS para layout y estilo',
         b: 'HTML y CSS no es programar',
         c: 'No <link rel="stylesheet" href="styles.css">, no gain',
         d: 'Todas son correctas',
