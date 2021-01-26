@@ -53,19 +53,19 @@ const quizData =
 
     {
         question: '3.- En Emment escribo ul>li*4>a+img. ¿Qué obtengo?',
-        a: '1 lista no ordenada, que tiene 4 li y cada uno de estos tiene 1 enlace y, después, 1 imagen',
-        b: '1 lista ordenada, que tiene 4 li y cada uno de estos tiene 1 enlace y, después, 1 imagen',
-        c: '1 lista ordenada, que tiene 1 li que contiene 4 enlaces y, después, 1 imagen',
-        d: '1 lista no ordenada, que tiene 4 li y cada uno de estos tiene 1 enlace y, dentro, 1 imagen',
+        a: 'lista no ordenada, con 4 li, cada uno tiene 1 enlace y, después, 1 imagen',
+        b: 'lista ordenada, con 4 li, cada uno tiene 1 enlace y, después, 1 imagen',
+        c: 'lista ordenada, con 1 li que tiene 4 enlaces y, después, 1 imagen',
+        d: 'lista no ordenada, con 4 li, cada uno tiene 1 enlace y, dentro, 1 imagen',
         correct: 'a',
     },
     
     {
         question: '4.- ¿Qué bucle imprime todos los enteros pares?',
-        a: 'for (int i=0 ; i<100; i++) { System.out.println(i); }',
-        b: 'for (int i=0 ; i<100; i++) { if(i/2==0){System.out.println(i);} }',
-        c: 'for (int i=0 ; i<100; i++) { if(i%2==0){System.out.println(i);} }',
-        d: 'for (int i=0 ; i<100; i++) { if(i%2!=0){System.out.println(i);} }',
+        a: 'for ( ... ) { System.out.println(i); }',
+        b: 'for ( ... ) { if ( i/2 == 0 ) { System.out.println(i); } }',
+        c: 'for ( ... ) { if ( i%2 == 0 ) { System.out.println(i); } }',
+        d: 'for ( ... ) { if ( i%2 != 0) { System.out.println(i); } }',
         correct: 'c',
     },
     
@@ -80,26 +80,26 @@ const quizData =
     
     {
         question: '6.- ¿Cuál es la mejor estrategia de Layout en CSS?',
-        a: 'Grid, Media Queries, Responsive Design y Mobile First',
+        a: 'Grid y Media Queries',
         b: 'Cualquiera menos Float',
-        c: 'Combinar Flex y Grid, Media Queries, Responsive Design y Mobile first',
-        d: 'Flex, Media Queries, Responsive Design y Mobile first',
+        c: 'Combinar Flex y Grid, y Media Queries',
+        d: 'Flex y Media Queries',
         correct: 'b',
     },
     
     {
         question: '7.- ¿Por qué usar Wordpress como desarrollador?',
-        a: 'Son soluciones adecuadas para determinados proyectos que ahorran mucho tiempo',
+        a: 'Permite crear soluciones en menos tiempo para determinados proyectos',
         b: 'Todas son correctas',
         c: 'Para ser el intermediario entre una empresa que necesita un CMS o tienda online y no tiene ni idea de tecnología',
-        d: 'No necesitas buscar y aprender librerías',
+        d: 'Hay una gran comunidad de desarrollo de ese CMS',
         correct: 'b',
     },
     
     {
         question: '8.- "Acabo de finalizar DAW y DAM, ya soy un Full Stack Developer"',
         a: 'Todas son correctas',
-        b: '"Aunque aún no domino CSS y git, Scrum lo conozco por un amigo, y los frameworks Spring, Lavarel, Node.js, MongoDB y ANGULAR los dejo para después de dominar la base"',
+        b: '"Ni idea de frameworks, Scrum y Git"',
         c: 'Los Senior y los de RRHH te miran estupefactos',
         d: 'JAJAJAJAJAJAJAJAJAJA',
         correct: 'a',
@@ -107,17 +107,17 @@ const quizData =
     
     {
         question: '9.- ¿Cuál es la menos redundante?',
-        a: 'if(checkInputs()){alert("Error!");} else if(checkInputs()!=true) {alert("Es correcto");} else {alert("Es correcto");}',
-        b: 'if(checkInputs()==true){alert("Error!");} else {alert("Es correcto");}',
-        c: 'if(checkInputs()!=false){alert("Error!");} else {alert("Es correcto");}',
-        d: 'if(checkInputs()){alert("Error!");} else {alert("Es correcto");}',
+        a: 'if( checkInputs() ) { alert("Error!"); } else if( checkInputs() != true ) { alert("Es correcto"); } else { alert("Es correcto"); }',
+        b: 'if( checkInputs() == true ) { alert("Error!"); } else { alert("Es correcto"); }',
+        c: 'if( checkInputs() != false ) { alert("Error!"); } else { alert("Es correcto"); }',
+        d: 'if( checkInputs() ) { alert("Error!"); } else { alert("Es correcto"); }',
         correct: 'd',
     },
     
     {
         question: '10.- La jornada laboral va a finalizar y debes guardar los cambios en el repo:',
         a: 'Archivo, guardar como...',
-        b: 'Esto es una pregunta trampa, el autor de esta quiz app quiere liármela',
+        b: 'Copiar en USB',
         c: 'git add ., git commit -m nombre_commit, git push -u origin nombre_rama',
         d: 'Si instalas una extensión de autoguardado en tu entorno de desarrollo, esto no es necesario',
         correct: 'c',
@@ -149,13 +149,12 @@ function loadQuiz()
 
     const currentQuizData = quizData[currentQuiz];
 
-        questionE1.innerText = currentQuizData.question;
-        a_text.innerText = currentQuizData.a;
-        b_text.innerText = currentQuizData.b;
-        c_text.innerText = currentQuizData.c;
-        d_text.innerText = currentQuizData.d;
+    questionE1.innerText = currentQuizData.question;
+    a_text.innerText = currentQuizData.a;
+    b_text.innerText = currentQuizData.b;
+    c_text.innerText = currentQuizData.c;
+    d_text.innerText = currentQuizData.d;
 }
-//
 
 // función que almacena id del input seleccionado en variable answer (no seleccionado -> answer=undefined;)
 function getSelected() {
@@ -202,10 +201,12 @@ submitBtn.addEventListener("click", () => {
         if(answer === quizData[currentQuiz].correct)
         {
             correctas++;
+            alert("¡RESPUESTA CORRECTA!\n\nCORRECTAS = "+correctas+"\n\nEERÓNEAS = "+erroneas);
         }
         else
         {
             erroneas++;
+            alert("¡RESPUESTA ERRÓNEA!\n\nCORRECTAS = "+correctas+"\n\nERRÓNEAS = "+erroneas);
         }
         currentQuiz++;
         if(currentQuiz < quizData.length)

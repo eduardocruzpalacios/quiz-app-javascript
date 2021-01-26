@@ -53,7 +53,7 @@ div.quiz-container button {
 
 div.quiz-container button:hover {
     opacity: 0.5;
-    transition: opacity ease-in-out 1s;
+    transition: opacity ease-in-out .25s;
 }
 
 /* MQ TABLET */

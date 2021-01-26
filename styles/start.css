@@ -58,7 +58,7 @@ div.start button:hover {
     background-color: black;
     border: solid 2px white;
     color: white;
-    transition: background-color ease-in-out 1s, color ease-in-out 1s;
+    transition: background-color ease-in-out .25s, color ease-in-out .25s;
 }
 
 div.start.hide {
