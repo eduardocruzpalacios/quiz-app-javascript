@@ -201,7 +201,7 @@ submitBtn.addEventListener("click", () => {
         if(answer === quizData[currentQuiz].correct)
         {
             correctas++;
-            alert("¡RESPUESTA CORRECTA!\n\nCORRECTAS = "+correctas+"\n\nEERÓNEAS = "+erroneas);
+            alert("¡RESPUESTA CORRECTA!\n\nCORRECTAS = "+correctas+"\n\nERRÓNEAS = "+erroneas);
         }
         else
         {
