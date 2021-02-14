@@ -13,7 +13,7 @@ const startGame = document.getElementById("start-game");
 
 startGame.addEventListener("click", () => {
     const nombreValue = nombre.value;
-    if(nombreValue !== '')
+    if (nombreValue !== '')
     {
         document.querySelector('.start').classList.toggle('hide');
         document.querySelector('.quiz-container').classList.toggle('show');
@@ -107,10 +107,10 @@ const quizData =
     
     {
         question: '9.- ¿Cuál es la menos redundante?',
-        a: 'if( checkInputs() ) { alert("Error!"); } else if( checkInputs() != true ) { alert("Es correcto"); } else { alert("Es correcto"); }',
-        b: 'if( checkInputs() == true ) { alert("Error!"); } else { alert("Es correcto"); }',
-        c: 'if( checkInputs() != false ) { alert("Error!"); } else { alert("Es correcto"); }',
-        d: 'if( checkInputs() ) { alert("Error!"); } else { alert("Es correcto"); }',
+        a: 'if ( checkInputs() ) { alert("Error!"); } else if ( checkInputs() != true ) { alert("Es correcto"); } else { alert("Es correcto"); }',
+        b: 'if ( checkInputs() == true ) { alert("Error!"); } else { alert("Es correcto"); }',
+        c: 'if ( checkInputs() != false ) { alert("Error!"); } else { alert("Es correcto"); }',
+        d: 'if ( checkInputs() ) { alert("Error!"); } else { alert("Es correcto"); }',
         correct: 'd',
     },
     
@@ -196,9 +196,9 @@ submitBtn.addEventListener("click", () => {
 
     console.log(answer); // comprobar por consola que coge el valor
 
-    if(answer)
+    if (answer)
     {
-        if(answer === quizData[currentQuiz].correct)
+        if (answer === quizData[currentQuiz].correct)
         {
             correctas++;
             alert("¡RESPUESTA CORRECTA!\n\nCORRECTAS = "+correctas+"\n\nERRÓNEAS = "+erroneas);
@@ -209,7 +209,7 @@ submitBtn.addEventListener("click", () => {
             alert("¡RESPUESTA ERRÓNEA!\n\nCORRECTAS = "+correctas+"\n\nERRÓNEAS = "+erroneas);
         }
         currentQuiz++;
-        if(currentQuiz < quizData.length)
+        if (currentQuiz < quizData.length)
         {
             loadQuiz();
         }
