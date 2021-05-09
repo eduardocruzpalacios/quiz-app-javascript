@@ -13,13 +13,10 @@ const startGame = document.getElementById("start-game");
 
 startGame.addEventListener("click", () => {
     const nombreValue = nombre.value;
-    if (nombreValue !== '')
-    {
+    if (nombreValue !== '') {
         document.querySelector('.start').classList.toggle('hide');
         document.querySelector('.quiz-container').classList.toggle('show');
-    }
-    else
-    {
+    } else {
         alert("Debes poner un nombre para comenzar el juego");
     }
 });
@@ -31,9 +28,7 @@ datos preguntas y respuestas
         4 respuetas
         1 correcta
 */
-const quizData =
-[
-    {
+const quizData = [{
         question: '1.- ¿Cuál es el vínculo entre Java y JavaScript?',
         a: 'Java viene de JavaScript',
         b: 'JavaScript viene de Java',
@@ -59,7 +54,7 @@ const quizData =
         d: 'lista no ordenada, con 4 li, cada uno tiene 1 enlace y, dentro, 1 imagen',
         correct: 'a',
     },
-    
+
     {
         question: '4.- ¿Qué bucle imprime todos los enteros pares?',
         a: 'for ( ... ) { System.out.println(i); }',
@@ -68,7 +63,7 @@ const quizData =
         d: 'for ( ... ) { if ( i%2 != 0) { System.out.println(i); } }',
         correct: 'c',
     },
-    
+
     {
         question: '5.- ¿Cuál NO es SQL Injection?',
         a: '" or ""="',
@@ -77,7 +72,7 @@ const quizData =
         d: 'SQL Parameters',
         correct: 'd',
     },
-    
+
     {
         question: '6.- ¿Cuál es la mejor estrategia de Layout en CSS?',
         a: 'Grid y Media Queries',
@@ -86,7 +81,7 @@ const quizData =
         d: 'Flex y Media Queries',
         correct: 'b',
     },
-    
+
     {
         question: '7.- ¿Por qué usar Wordpress como desarrollador?',
         a: 'Permite crear soluciones en menos tiempo para determinados proyectos',
@@ -95,7 +90,7 @@ const quizData =
         d: 'Hay una gran comunidad de desarrollo de ese CMS',
         correct: 'b',
     },
-    
+
     {
         question: '8.- "Acabo de finalizar DAW y DAM, ya soy un Full Stack Developer"',
         a: 'Todas son correctas',
@@ -104,7 +99,7 @@ const quizData =
         d: 'JAJAJAJAJAJAJAJAJAJA',
         correct: 'a',
     },
-    
+
     {
         question: '9.- ¿Cuál es la menos redundante?',
         a: 'if ( checkInputs() ) { alert("Error!"); } else if ( checkInputs() != true ) { alert("Es correcto"); } else { alert("Es correcto"); }',
@@ -113,7 +108,7 @@ const quizData =
         d: 'if ( checkInputs() ) { alert("Error!"); } else { alert("Es correcto"); }',
         correct: 'd',
     },
-    
+
     {
         question: '10.- La jornada laboral va a finalizar y debes guardar los cambios en el repo:',
         a: 'Archivo, guardar como...',
@@ -143,8 +138,7 @@ const answerEls = document.querySelectorAll(".answer");
 // ejecutar función coge datos 1 instancia objeto y los mete en h2 y label
 loadQuiz();
 
-function loadQuiz()
-{
+function loadQuiz() {
     deselectAnswers();
 
     const currentQuizData = quizData[currentQuiz];
@@ -158,11 +152,10 @@ function loadQuiz()
 
 // función que almacena id del input seleccionado en variable answer (no seleccionado -> answer=undefined;)
 function getSelected() {
-    let answer = undefined;
+    let answer;
 
     answerEls.forEach((answerEl) => {
-        if (answerEl.checked)
-        {
+        if (answerEl.checked) {
             answer = answerEl.id;
         }
     });
@@ -196,30 +189,23 @@ submitBtn.addEventListener("click", () => {
 
     console.log(answer); // comprobar por consola que coge el valor
 
-    if (answer)
-    {
-        if (answer === quizData[currentQuiz].correct)
-        {
+    if (answer) {
+        if (answer === quizData[currentQuiz].correct) {
             correctas++;
-            alert("¡RESPUESTA CORRECTA!\n\nCORRECTAS = "+correctas+"\n\nERRÓNEAS = "+erroneas);
-        }
-        else
-        {
+            alert("¡RESPUESTA CORRECTA!\n\nCORRECTAS = " + correctas + "\n\nERRÓNEAS = " + erroneas);
+        } else {
             erroneas++;
-            alert("¡RESPUESTA ERRÓNEA!\n\nCORRECTAS = "+correctas+"\n\nERRÓNEAS = "+erroneas);
+            alert("¡RESPUESTA ERRÓNEA!\n\nCORRECTAS = " + correctas + "\n\nERRÓNEAS = " + erroneas);
         }
         currentQuiz++;
-        if (currentQuiz < quizData.length)
-        {
+        if (currentQuiz < quizData.length) {
             loadQuiz();
-        }
-        else
-        {
+        } else {
             document.querySelector('.quiz-container').classList.toggle('show');
             document.querySelector('.summary').classList.toggle('show');
             // hace que la función se ejecute cada X tiempo
             setInterval(createIcon, 300);
-            
+
             const nombreValue = nombre.value;
             // console.log(nombreValue);
             document.getElementById("mostrarNombre").innerHTML = nombreValue;
@@ -227,14 +213,12 @@ submitBtn.addEventListener("click", () => {
             document.getElementById("mostrarCorrectas").innerHTML = correctas;
             // console.log(erroneas);
             document.getElementById("mostrarErroneas").innerHTML = erroneas;
-            
-            const puntuacion = (correctas*100) - (erroneas*50);
+
+            const puntuacion = (correctas * 100) - (erroneas * 50);
             // console.log(puntuacion);
             document.getElementById("mostrarPuntuacion").innerHTML = puntuacion;
-        }   
-    }
-    else
-    {
+        }
+    } else {
         alert("Debe seleccionar una opción");
     }
 });
@@ -242,12 +226,11 @@ submitBtn.addEventListener("click", () => {
 /* LLUVIA ICONOS */
 
 // definir función
-function createIcon()
-{
+function createIcon() {
     // constant box -> crear elemento img
     const box = document.createElement("img");
     // hacer img tenga src="prize.svg"; fuente https://www.flaticon.com/free-icon/trophy_3112946
-    box.setAttribute("src","trophy.svg");
+    box.setAttribute("src", "trophy.svg");
 
     // (para elemento img) tener atributo left= ; con valor 0-100vh
     box.style.left = Math.random() * 100 + "vw";

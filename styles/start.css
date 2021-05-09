@@ -9,7 +9,8 @@ div.start h2 {
     text-align: center;
 }
 
-div.start h2, div.start p.margin-bottom {
+div.start h2,
+div.start p.margin-bottom {
     margin-bottom: 0.75rem;
 }
 
@@ -72,27 +73,33 @@ div.start.hide {
         padding: 1.5rem;
         width: 70%;
     }
-    div.start h2, div.start p.margin-bottom {
+
+    div.start h2,
+    div.start p.margin-bottom {
         margin-bottom: 1rem;
     }
+
     div.start ul li {
         margin: 0.5rem 0 0.5rem 1.5rem;
     }
+
     div.start div input[type="text"] {
         width: 70%;
     }
 }
 
 /* MQ PC */
-  
+
 @media (min-width: 993px) {
     div.start {
         padding: 2rem;
         width: 60%;
     }
+
     div.start ul li {
         margin: 0.5rem 0 0.5rem 2rem;
     }
+
     div.start div input[type="text"] {
         width: 60%;
     }

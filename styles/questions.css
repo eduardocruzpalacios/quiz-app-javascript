@@ -63,18 +63,20 @@ div.quiz-container button:hover {
         padding: 1.5rem;
         width: 70%;
     }
+
     div.quiz-container button {
         width: 70%;
     }
 }
 
 /* MQ PC */
-  
+
 @media (min-width: 993px) {
     div.quiz-container {
         padding: 2rem;
         width: 60%;
     }
+
     div.quiz-container button {
         width: 60%;
     }

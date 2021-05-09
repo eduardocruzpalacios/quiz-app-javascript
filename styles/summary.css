@@ -14,7 +14,8 @@ div.summary.show h2 {
     text-align: center;
 }
 
-div.summary.show h2, div.summary.show p {
+div.summary.show h2,
+div.summary.show p {
     margin-bottom: 0.75rem;
 }
 
@@ -29,13 +30,15 @@ div.summary.show p span#mostrarNombre {
         padding: 1.5rem;
         width: 70%;
     }
-    div.summary.show h2, div.summary.show p {
+
+    div.summary.show h2,
+    div.summary.show p {
         margin-bottom: 1rem;
     }
 }
 
 /* MQ PC */
-  
+
 @media (min-width: 993px) {
     div.summary.show {
         padding: 2rem;

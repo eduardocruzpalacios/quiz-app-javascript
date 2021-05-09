@@ -19,6 +19,7 @@ body {
     justify-content: center;
 }
 
-h2, h3 {
+h2,
+h3 {
     font-family: 'Ubuntu', sans-serif;
 }
