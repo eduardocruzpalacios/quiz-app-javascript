@@ -1,10 +1,3 @@
-/*
-datos preguntas y respuestas
-    son 10 objetos que tienen estas propiedades
-        1 pregunta
-        4 respuetas
-        1 correcta
-*/
 const quizData = [{
         question: '1.- ¿Cuál es el vínculo entre Java y JavaScript?',
         a: 'Java viene de JavaScript',

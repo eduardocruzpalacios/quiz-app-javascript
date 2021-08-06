@@ -2,17 +2,16 @@
 <html lang="en">
 
 <head>
-    <!-- METADATOS -->
+    <!-- METADA -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Eduardo de la Cruz Palacios">
-    <meta name="description" content="Quiz app para desarrolladores web">
-    <meta name="keywords"
-        content="quiz app, desarrollo web, frontend, backend, programación, html, css, javascript, git, java, sql, bbdd">
+    <meta name="description" content="Quiz app">
+    <meta name="keywords" content="quiz app">
     <meta name="copyright" content="Eduardo de la Cruz Palacios" />
     <meta name="robots" content="index, follow" />
-    <title>Quiz App - Desarrolladores Web</title>
-    <!-- STYLES -->
+    <title>Quiz App</title>
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="styles/reset.css">
     <link rel="stylesheet" type="text/css" href="styles/start.css">
     <link rel="stylesheet" type="text/css" href="styles/questions.css">
@@ -21,6 +20,10 @@
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu&display=swap" rel="stylesheet">
+    <!-- JS -->
+    <script src="js/iconrain.js" defer></script>
+    <script src="js/questions.js" defer></script>
+    <script src="js/app.js" defer></script>
 </head>
 
 <body>
@@ -35,7 +38,7 @@
         </ul>
         <p class="margin-bottom"><strong>Introduce tu nombre y comienza el juego</strong></p>
         <div>
-            <input type="text" placeholder="Nombre..." id="nombre" required>
+            <input type="text" placeholder="Nombre..." id="name" required>
             <button id="start-game">START</button>
         </div>
     </div>
@@ -65,15 +68,12 @@
 
     <div class="summary">
         <h2>¡Finalizaste el quiz!</h2>
-        <p><span id="mostrarNombre"></span>, estos son tus resultados:</p>
-        <p><span id="mostrarCorrectas"></span> Correctas</span></p>
-        <p><span id="mostrarErroneas"></span> Erróneas</p>
-        <p>Tu Puntuación es <span id="mostrarPuntuacion"></span></p>
+        <p><span id="showName"></span>, estos son tus resultados:</p>
+        <p><span id="showRight"></span> Correctas</span></p>
+        <p><span id="showWrong"></span> Erróneas</p>
+        <p>Tu Puntuación es <span id="showPoints"></span></p>
     </div>
 
-    <script src="js/iconrain.js"></script>
-    <script src="js/questions.js"></script>
-    <script src="js/app.js"></script>
 </body>
 
 </html>
