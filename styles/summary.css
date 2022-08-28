@@ -3,10 +3,10 @@
 }
 
 .summary.show {
-    display: block;
     background-color: white;
-    padding: 1rem;
     border-radius: 12px;
+    display: block;
+    padding: 1rem;
     width: 80%;
 }
 
